@@ -55,6 +55,8 @@ h1 {
 }
 
 .viewer {
+  display: flex;
+  flex-flow: column nowrap;
   color: #c97874;
   float: left;
   line-height: 3em;
@@ -63,6 +65,12 @@ h1 {
   overflow: hidden;
   width: 7.5em;
   height: 3em;
+}
+
+.previousResultDisplay,
+.currentOperandDisplay {
+  width: 100%;
+  height: 50%;
 }
 
 button {
@@ -103,20 +111,20 @@ button {
   }
 }
 
-/* Same as above, modified for operators */
+/* Same as above, modified for operators 
 .ops:focus::after {
   content: attr(data-ops);
   margin-left: -210px;
   width: 420px;
 }
 
-/* Same as above, modified for result */
+ Same as above, modified for result 
 .equals:focus::after {
   content: attr(data-result);
   margin-left: -300px;
   width: 600px;
 }
-
+*/
 /* Reset button */
 
 .reset {
