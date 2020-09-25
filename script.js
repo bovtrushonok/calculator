@@ -22,7 +22,7 @@ class Calculator {
 	}
 
 	chooseOperation (op) {
-		
+
 		if (this.currentOperand === '') return;
 		if (this.previousOperand !== "") this.compute();
 		this.operation = op;
@@ -51,7 +51,8 @@ class Calculator {
 			default: 
 			return;
 		}
-		this.currentOperand = computation.toFixed(10);
+		if (computation % 1 != 0) this.currentOperand = computation.toFixed(10);
+		else this.currentOperand = computation;
 		this.operation = undefined;
 		this.previousOperand = '';
 	 }
