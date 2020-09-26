@@ -22,7 +22,7 @@ class Calculator {
 	}
 
 	chooseOperation (op) {
-		if (this.currentOperand === '') return;
+		if (this.currentOperand === '' && op !== "-") return;
 		if (this.previousOperand !== "") this.compute();
 		if (op == "√") {
 			this.operation = op;
@@ -31,6 +31,10 @@ class Calculator {
 			this.compute();
 			return;
 		};
+		if (this.currentOperand === '' && op == '-') {
+			this.currentOperand = '-';
+			return;
+		}
 		this.operation = op;
 		this.previousOperand = this.currentOperand;
 		this.currentOperand = '';
@@ -71,7 +75,7 @@ class Calculator {
 			default: 
 			return;
 		}
-		if (computation % 1 != 0) this.currentOperand = computation.toFixed(10);
+		if (computation % 1 != 0) this.currentOperand = computation.toFixed(5);
 		else this.currentOperand = computation;
 		this.operation = undefined;
 		this.previousOperand = '';
