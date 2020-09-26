@@ -34,7 +34,7 @@ h1 {
 .calculator {
   font-size: 28px;
   margin: 0 auto;
-  width: 10em;
+  /*width: 10em;
   
   &::before,
   &::after {
@@ -44,7 +44,7 @@ h1 {
   
   &::after {
     clear: both;
-  }
+  }*/
 }
 
 /* Calculator after dividing by zero */

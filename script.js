@@ -22,9 +22,15 @@ class Calculator {
 	}
 
 	chooseOperation (op) {
-		
 		if (this.currentOperand === '') return;
 		if (this.previousOperand !== "") this.compute();
+		if (op == "√") {
+			this.operation = op;
+			this.previousOperand = this.currentOperand;
+			this.currentOperand = '';
+			this.compute();
+			return;
+		};
 		this.operation = op;
 		this.previousOperand = this.currentOperand;
 		this.currentOperand = '';
@@ -34,7 +40,7 @@ class Calculator {
 		let computation;
 		let prev = parseFloat(this.previousOperand);
 		let current = parseFloat(this.currentOperand);
-		if (isNaN(prev) || isNaN(current)) return;
+		if ((isNaN(prev) || isNaN(current)) && this.operation !== "√") return;
 		switch(this.operation) {
 			case "+":
 			computation = prev + current;
@@ -45,8 +51,22 @@ class Calculator {
 			case "*":
 			computation = prev * current;
 			break;
-			case "/":
+			case "÷":
 			computation = prev / current;
+			break;
+			case "√":
+			if (prev < 0) {
+				alert('impossible operation, parameter changed automatically');
+				computation = Math.pow(Math.abs(prev), 0.5);
+			}  else {
+				computation = Math.pow(prev, 0.5);
+			}
+			this.currentOperand = computation;
+			this.operation = undefined;
+			this.previousOperand = '';
+			break;	
+			case "^":
+			computation = Math.pow(prev, current);
 			break;
 			default: 
 			return;
