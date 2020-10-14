@@ -82,14 +82,16 @@ class Calculator {
 			return;
 		}
 		if (computation % 1 != 0) {
-			this.currentOperand = computation.toFixed(5);
-			this.computation = computation.toFixed(5);
+			let fractionNumberLength = (computation.toString().split('.').pop().length >15) ? 2 : computation.toString().split('.').pop().length;
+			this.currentOperand = computation.toFixed(fractionNumberLength);
+			this.computation = computation.toFixed(fractionNumberLength);
 		} else {
 			this.currentOperand = computation;
 			this.computation = computation;
+		}
 			this.operation = undefined;
 			this.previousOperand = '';
-		}
+		
 	 }
 
 	updateDisplay() {
