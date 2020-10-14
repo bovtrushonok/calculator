@@ -3,6 +3,7 @@ class Calculator {
 		this.previousOperand = previosOperand;
 		this.currentOperand = currentOperand;
 		this.operation = undefined;
+		this.computation = '';
 		this.clear();
 	}
 
@@ -13,12 +14,17 @@ class Calculator {
 	clear () {
 		this.currentOperand = '';
 		this.previousOperand = '';
+		this.computation = '';
 		this.operation = undefined;
 	}
 
 	appendNumber(digit) {
-		if (this.currentOperand.includes('.') && digit === '.') return;
-		this.currentOperand += digit.toString();
+		if (this.currentOperand.toString().includes('.') && digit === '.') return;
+		else if (this.computation) {
+			this.currentOperand = digit;
+			this.computation = '';
+		}
+		else this.currentOperand += digit.toString();
 	}
 
 	chooseOperation (op) {
@@ -75,10 +81,15 @@ class Calculator {
 			default: 
 			return;
 		}
-		if (computation % 1 != 0) this.currentOperand = computation.toFixed(5);
-		else this.currentOperand = computation;
-		this.operation = undefined;
-		this.previousOperand = '';
+		if (computation % 1 != 0) {
+			this.currentOperand = computation.toFixed(5);
+			this.computation = computation.toFixed(5);
+		} else {
+			this.currentOperand = computation;
+			this.computation = computation;
+			this.operation = undefined;
+			this.previousOperand = '';
+		}
 	 }
 
 	updateDisplay() {
