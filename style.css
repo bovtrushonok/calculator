@@ -34,7 +34,7 @@ h1 {
 .calculator {
   font-size: 28px;
   margin: 0 auto;
-  /*width: 10em;
+  width: 10em;
   
   &::before,
   &::after {
@@ -44,15 +44,11 @@ h1 {
   
   &::after {
     clear: both;
-  }*/
+  }
 }
 
-/* Calculator after dividing by zero */
-.broken {
-  animation: broken 2s;
-  transform: translate3d(0,-2000px,0);
-  opacity: 0;
-}
+
+
 
 .viewer {
   display: flex;
@@ -125,31 +121,9 @@ button {
   width: 600px;
 }
 */
-/* Reset button */
 
-.reset {
-  background: rgba(201,120,116,.28);
-  color:#c97874;
-  font-weight: 400;
-  margin-left: -77px;
-  padding: 0.5em 1em;
-  position: absolute;
-    top: -20em;
-    left: 50%;
-  width: auto;
-  height: auto;
-  
-  &:hover {
-    background: #c97874;
-    color: #100a1c;    
-  }
-  
-  /* When button is revealed */
-  &.show {
-    top: 20em;
-    animation: fadein 4s;
-  }
-}
+
+
 
 /* Animations */
 
@@ -207,22 +181,6 @@ button {
 
   100% {
     transform: translate3d(0,-2000px,0);
-  }
-}
-
-/* Reset button fadein */
-@keyframes fadein {
-  0% {
-    top: 20em;
-    opacity: 0;
-  }
-  
-  50% {
-    opacity: 0;
-  }
-  
-  100% {
-    opacity: 1;
   }
 }
 

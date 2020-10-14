@@ -12,7 +12,7 @@ class Calculator {
 
 	clear () {
 		this.currentOperand = '';
-		this.previosOperand = '';
+		this.previousOperand = '';
 		this.operation = undefined;
 	}
 
@@ -84,10 +84,11 @@ class Calculator {
 	updateDisplay() {
 	 	currentOperandDisplay.textContent = this.currentOperand;
 	 	if (this.operation) {
-      		previousResultDisplay.textContent = `${this.previousOperand} ${this.operation}`;
+			  previousResultDisplay.textContent = `${this.previousOperand} ${this.operation}`;
+
     	} else {
-      		previousResultDisplay.textContent = this.previousOperand;
-    	}
+			  previousResultDisplay.textContent = this.previousOperand;
+	  	}
    }
 	 	
 }
@@ -100,6 +101,7 @@ const digits = document.querySelectorAll('.num');
 const operations = document.querySelectorAll('.ops');
 const equal = document.querySelector('.equals');
 const del = document.querySelector('.clear');
+const clearAll = document.querySelector('.clearAll');
 
 const calculator = new Calculator(previousOperand, currentOperand);
 digits.forEach(digit => {
@@ -126,4 +128,8 @@ equal.addEventListener('click', () => {
 		calculator.updateDisplay();
 });
 
+clearAll.addEventListener('click', () => {
+	calculator.clear();
+	calculator.updateDisplay();
+});
 
